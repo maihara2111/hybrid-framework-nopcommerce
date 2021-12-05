@@ -43,7 +43,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest {
 		incorrectPassword = "maihara";
 
 		System.out.println("Pre-Condition - Step 01: Click on Register link");
-		homePage.clickToRegisterLink();
+		homePage.openRegisterPage();
 
 		// Click register link qua Register page
 		//2
@@ -70,7 +70,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest {
 
 	@Test
 	public void Login_01_Empty_Data() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		//4
 		loginPage = new LoginPageObject(driver);
 
@@ -81,7 +81,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest {
 
 	@Test
 	public void Login_02_Invalid_Email() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		//5
 		loginPage = new LoginPageObject(driver);
 
@@ -94,7 +94,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest {
 
 	@Test
 	public void Login_03_Email_Not_Found() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		//6
 		loginPage = new LoginPageObject(driver);
 
@@ -107,7 +107,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest {
 
 	@Test
 	public void Login_04_Existing_Email_Invalid_Password() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		//7
 		loginPage = new LoginPageObject(driver);
 
@@ -120,7 +120,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest {
 
 	@Test
 	public void Login_05_Existing_Email_Incorrect_Password() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		//8
 		loginPage = new LoginPageObject(driver);
 
@@ -134,7 +134,7 @@ public class Level_06_Page_Generator_Manager_I extends BaseTest {
 
 	@Test
 	public void Login_06_Valid_Email_Password() {
-		homePage.clickToLoginLink();
+		homePage.openLoginPage();
 		//9
 		loginPage = new LoginPageObject(driver);
 

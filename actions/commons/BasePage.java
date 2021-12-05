@@ -15,6 +15,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageObjects.AddressPageObject;
+import pageObjects.MyProductReviewPageObject;
+import pageObjects.PageGeneratorManager;
+import pageObjects.RewardPointPageObject;
+import pageUIs.BasePageUI;
+
 
 public class BasePage {
 	
@@ -317,5 +323,24 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByXpath(xpathLocator)));
 	}
 
+	public AddressPageObject openAddressPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.ADDRESS_PAGE);
+		clickToElement(driver, BasePageUI.ADDRESS_PAGE);
+		return PageGeneratorManager.getAddressPage(driver);
+	}
+	
+	public RewardPointPageObject openRewardPointPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.REWARD_POINT_PAGE);
+		clickToElement(driver, BasePageUI.REWARD_POINT_PAGE);
+		return PageGeneratorManager.getRewardPointPage(driver);
+	}
+	
+	public MyProductReviewPageObject openMyProductReviewPage(WebDriver driver) {
+		waitForElementClickable(driver, BasePageUI.MY_PRODUCT_REVIEW_PAGE);
+		clickToElement(driver, BasePageUI.MY_PRODUCT_REVIEW_PAGE);
+		return PageGeneratorManager.getMyProductReviewPage(driver);
+	}
+	
+	
 	private long longTimeout = 30;
 }

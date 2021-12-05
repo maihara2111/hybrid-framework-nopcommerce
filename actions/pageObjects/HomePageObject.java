@@ -12,7 +12,7 @@ public class HomePageObject extends BasePage{
 		this.driver = driver;
 	}
 
-	public RegisterPageOject clickToRegisterLink() {
+	public RegisterPageOject openRegisterPage() {
 		waitForElementClickable(driver, HomePageUI.REGISTER_LINK);
 		clickToElement(driver, HomePageUI.REGISTER_LINK);
 		//2
@@ -20,10 +20,16 @@ public class HomePageObject extends BasePage{
 		return PageGeneratorManager.getRegisterPage(driver);
 	}
 
-	public LoginPageObject clickToLoginLink() {
+	public LoginPageObject openLoginPage() {
 		waitForElementClickable(driver, HomePageUI.LOG_IN_LINK);
 		clickToElement(driver, HomePageUI.LOG_IN_LINK);
 		return PageGeneratorManager.getLoginPage(driver);
+	}
+	
+	public CustomerInfoPageObject openCustomerInfoPage() {
+		waitForElementClickable(driver, HomePageUI.MY_ACCOUNT_LINK);
+		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
+		return PageGeneratorManager.getCustomerInfoPage(driver);
 	}
 
 	public boolean isMyAccountLinkDisplayed() {
