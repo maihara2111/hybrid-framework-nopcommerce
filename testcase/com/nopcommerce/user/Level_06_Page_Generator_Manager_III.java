@@ -9,10 +9,10 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.RegisterPageOject;
+import commons.PageGeneratorManager;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserLoginPageObject;
+import pageObjects.nopcommerce.user.UserRegisterPageOject;
 
 //Cach 2:
 //Đưa viec khởi tạo page object vào trong chính hàm (action) của page cũ
@@ -21,16 +21,16 @@ import pageObjects.RegisterPageOject;
 public class Level_06_Page_Generator_Manager_III extends BaseTest {
 	private WebDriver driver;
 	private String emailAddress, firstName, lastName, password, invalidEmail, notFoundEmail, incorrectPassword;
-	private HomePageObject homePage;
-	private RegisterPageOject registerPage;
-	private LoginPageObject loginPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageOject registerPage;
+	private UserLoginPageObject loginPage;
 
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		// Call function
 		emailAddress = "maihara" + generateEmail();

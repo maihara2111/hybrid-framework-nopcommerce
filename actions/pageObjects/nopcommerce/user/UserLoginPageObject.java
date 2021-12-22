@@ -1,21 +1,22 @@
-package pageObjects;
+package pageObjects.nopcommerce.user;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.LoginPageUI;
+import commons.PageGeneratorManager;
+import pageUIs.nopCommerce.user.LoginPageUI;
 
-public class LoginPageObject extends BasePage{
+public class UserLoginPageObject extends BasePage{
 	private WebDriver driver;
 
-	public LoginPageObject(WebDriver driver) {
+	public UserLoginPageObject(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public HomePageObject clickToLoginButton() {
+	public UserHomePageObject clickToLoginButton() {
 		waitForElementClickable(driver, LoginPageUI.LOG_IN_BUTTON);
 		clickToElement(driver, LoginPageUI.LOG_IN_BUTTON);
-		return PageGeneratorManager.getHomePage(driver);
+		return PageGeneratorManager.getUserHomePage(driver);
 	}
 
 	public String getErrorMessageAtEmailTextbox() {
@@ -23,9 +24,9 @@ public class LoginPageObject extends BasePage{
 		return getElementText(driver, LoginPageUI.EMAIL_ERROR_MESSAGE);
 	}
 
-	public void inputToEmailTextbox(String invalidEmail) {
+	public void inputToEmailTextbox(String Email) {
 		waitForElementVisible(driver, LoginPageUI.EMAIL_TEXTBOX);
-		sendkeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, invalidEmail);
+		sendkeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, Email);
 	}
 
 	public String getErrorMessageUnsuccessful() {
@@ -33,8 +34,14 @@ public class LoginPageObject extends BasePage{
 		return getElementText(driver, LoginPageUI.UNSUCCESS_ERROR_MESSAGE);
 	}
 
-	public void inputToPasswordTextbox(String incorrectPassword) {
+	public void inputToPasswordTextbox(String Password) {
 		waitForElementVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
-		sendkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, incorrectPassword);
+		sendkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, Password);
+	}
+	
+	public UserHomePageObject loginAsUser(String Email, String Password) {
+		inputToEmailTextbox(Email);
+		inputToPasswordTextbox(Password);
+		return clickToLoginButton();
 	}
 }

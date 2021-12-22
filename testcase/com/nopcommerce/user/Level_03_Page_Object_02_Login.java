@@ -11,17 +11,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import commons.BasePage;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageOject;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserLoginPageObject;
+import pageObjects.nopcommerce.user.UserRegisterPageOject;
 
 public class Level_03_Page_Object_02_Login extends BasePage {
 	private WebDriver driver;
 	private String projectpath = System.getProperty("user.dir");
 	private String emailAddress, firstName, lastName, password, invalidEmail, notFoundEmail, incorrectPassword;
-	private HomePageObject homePage;
-	private RegisterPageOject registerPage;
-	private LoginPageObject loginPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageOject registerPage;
+	private UserLoginPageObject loginPage;
 
 	@BeforeClass
 	public void beforeClass() {
@@ -31,7 +31,7 @@ public class Level_03_Page_Object_02_Login extends BasePage {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get("https://demo.nopcommerce.com/");
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 		// Call function
 		emailAddress = "maihara" + generateEmail();
@@ -46,7 +46,7 @@ public class Level_03_Page_Object_02_Login extends BasePage {
 		homePage.openRegisterPage();
 
 		// Click register link qua Register page
-		registerPage = new RegisterPageOject(driver);
+		registerPage = new UserRegisterPageOject(driver);
 
 		System.out.println("Pre-Condition - Step 02: Input to required fields ");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -63,13 +63,13 @@ public class Level_03_Page_Object_02_Login extends BasePage {
 
 		System.out.println("Pre-Condition - Step 05: Click on Log out link");
 		registerPage.clickToLogOutLink();
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 	}
 
 	@Test
 	public void Login_01_Empty_Data() {
 		homePage.openLoginPage();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 
 		loginPage.clickToLoginButton();
 
@@ -79,7 +79,7 @@ public class Level_03_Page_Object_02_Login extends BasePage {
 	@Test
 	public void Login_02_Invalid_Email() {
 		homePage.openLoginPage();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 
 		loginPage.inputToEmailTextbox(invalidEmail);
 
@@ -91,7 +91,7 @@ public class Level_03_Page_Object_02_Login extends BasePage {
 	@Test
 	public void Login_03_Email_Not_Found() {
 		homePage.openLoginPage();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 
 		loginPage.inputToEmailTextbox(notFoundEmail);
 
@@ -103,7 +103,7 @@ public class Level_03_Page_Object_02_Login extends BasePage {
 	@Test
 	public void Login_04_Existing_Email_Invalid_Password() {
 		homePage.openLoginPage();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 
 		loginPage.inputToEmailTextbox(emailAddress);
 
@@ -115,7 +115,7 @@ public class Level_03_Page_Object_02_Login extends BasePage {
 	@Test
 	public void Login_05_Existing_Email_Incorrect_Password() {
 		homePage.openLoginPage();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 
 		loginPage.inputToEmailTextbox(emailAddress);
 		loginPage.inputToPasswordTextbox(incorrectPassword);
@@ -128,13 +128,13 @@ public class Level_03_Page_Object_02_Login extends BasePage {
 	@Test
 	public void Login_06_Valid_Email_Password() {
 		homePage.openLoginPage();
-		loginPage = new LoginPageObject(driver);
+		loginPage = new UserLoginPageObject(driver);
 
 		loginPage.inputToEmailTextbox(emailAddress);
 		loginPage.inputToPasswordTextbox(password);
 
 		loginPage.clickToLoginButton();
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 		
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 	}

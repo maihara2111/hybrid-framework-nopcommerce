@@ -10,21 +10,21 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.RegisterPageOject;
+import pageObjects.nopcommerce.user.UserHomePageObject;
+import pageObjects.nopcommerce.user.UserRegisterPageOject;
 
 public class Level_04_Multiple_Browser extends BaseTest {
 	private WebDriver driver;
 	private String emailAddress, firstName, lastName, password;
-	private HomePageObject homePage;
-	private RegisterPageOject registerPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageOject registerPage;
 
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 		// Call function
 		emailAddress = "maihara" + generateEmail();
@@ -39,7 +39,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		homePage.openRegisterPage();
 
 		// Click register link qua Register page
-		registerPage = new RegisterPageOject(driver);
+		registerPage = new UserRegisterPageOject(driver);
 
 		System.out.println("Register_01 - Step 02: Click on Register button");
 		registerPage.clickToRegisterButton();
@@ -58,7 +58,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		homePage.openRegisterPage();
 
 		// Click register link qua Register page
-		registerPage = new RegisterPageOject(driver);
+		registerPage = new UserRegisterPageOject(driver);
 
 		System.out.println("Register_02 - Step 02: Input to required fields ");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -80,7 +80,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		homePage.openRegisterPage();
 
 		// Click register link qua Register page
-		registerPage = new RegisterPageOject(driver);
+		registerPage = new UserRegisterPageOject(driver);
 
 		System.out.println("Register_03 - Step 02: Input to required fields ");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -97,7 +97,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 
 		System.out.println("Register_03 - Step 05: Click on Log out link");
 		registerPage.clickToLogOutLink();
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 	}
 
 	@Test
@@ -105,7 +105,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		System.out.println("Register_04 - Step 01: Click on Register link");
 		homePage.openRegisterPage();
 		// Click register link qua Register page
-		registerPage = new RegisterPageOject(driver);
+		registerPage = new UserRegisterPageOject(driver);
 
 		System.out.println("Register_04 - Step 02: Input to required fields ");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -127,7 +127,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		homePage.openRegisterPage();
 
 		// Click register link qua Register page
-		registerPage = new RegisterPageOject(driver);
+		registerPage = new UserRegisterPageOject(driver);
 
 		System.out.println("Register_05 - Step 02: Input to required fields ");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -148,7 +148,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 		System.out.println("Register_06 - Step 01: Click on Register link");
 		homePage.openRegisterPage();
 		// Click register link qua Register page
-		registerPage = new RegisterPageOject(driver);
+		registerPage = new UserRegisterPageOject(driver);
 
 		System.out.println("Register_06 - Step 02: Input to required fields ");
 		registerPage.inputToFirstNameTextbox(firstName);
